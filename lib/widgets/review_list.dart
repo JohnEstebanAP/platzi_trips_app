@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:platzi_trips_app/review.dart';
+import 'package:platzi_trips_app/widgets/review.dart';
 
 class ReviewList extends StatelessWidget {
   const ReviewList({Key? key}) : super(key: key);
