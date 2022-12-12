@@ -9,7 +9,7 @@ class BottonNavigationBarCustom extends StatefulWidget {
 }
 
 class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
-  int indexTap = 0;
+  int indexTap = 2;
 
   void onTapTapped(int index) {
     setState(() {
@@ -19,6 +19,41 @@ class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
 
   @override
   Widget build(BuildContext context) {
+    var listItems = [
+      (indexTap == 0)
+          ? BottomNavigationBarItem(
+              icon: _iconCustom(
+                  50, Colors.white, Icons.bookmark_outline_outlined),
+              label: "")
+          : BottomNavigationBarItem(
+              icon: _iconCustom(
+                  35, Colors.white60, Icons.bookmark_outline_outlined),
+              label: ""),
+      (indexTap == 1)
+          ? BottomNavigationBarItem(
+              icon: _iconCustom(50, Colors.white, Icons.live_tv_outlined),
+              label: "")
+          : BottomNavigationBarItem(
+              icon: _iconCustom(35, Colors.white60, Icons.live_tv_outlined),
+              label: ""),
+      (indexTap == 2)
+          ? BottomNavigationBarItem(
+              icon: _iconCustom(50, Colors.white, Icons.add), label: "")
+          : BottomNavigationBarItem(
+              icon: _iconCustom(35, Colors.white60, Icons.add), label: ""),
+      (indexTap == 3)
+          ? BottomNavigationBarItem(
+              icon: _iconCustom(50, Colors.white, Icons.email_outlined),
+              label: "")
+          : BottomNavigationBarItem(
+              icon: _iconCustom(35, Colors.white60, Icons.email_outlined),
+              label: ""),
+      (indexTap == 4)
+          ? BottomNavigationBarItem(
+              icon: _iconCustom(50, Colors.white, Icons.person), label: "")
+          : BottomNavigationBarItem(
+              icon: _iconCustom(35, Colors.white60, Icons.person), label: ""),
+    ];
     return Theme(
       data: Theme.of(context).copyWith(
         canvasColor: Colors.transparent,
@@ -30,22 +65,7 @@ class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
         currentIndex: indexTap,
         selectedFontSize: 0,
         onTap: onTapTapped,
-        items: [
-          BottomNavigationBarItem(
-              icon: _iconCustom(
-                  35, Colors.white60, Icons.bookmark_outline_outlined),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.live_tv_outlined),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: _iconCustom(50, Colors.white, Icons.add), label: ""),
-          BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.email_outlined),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.person), label: ""),
-        ],
+        items: listItems,
       ),
     );
   }
