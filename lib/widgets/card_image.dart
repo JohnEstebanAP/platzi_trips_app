@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/card_imagen_custom.dart';
-import 'package:platzi_trips_app/widgets/floating_action_button_green.dart';
+
+import '../Place/ui/widgets/card_imagen_custom.dart';
+import 'floating_action_button_green.dart';
 
 class CardImage extends StatelessWidget {
   final String pathImage;

@@ -4,7 +4,7 @@ import 'package:platzi_trips_app/widgets/star_point.dart';
 import 'package:platzi_trips_app/widgets/title_secondary.dart';
 
 class Review extends StatelessWidget {
-  String pathImage = "assets/img/img10.jpg";
+  String pathImage = "assets/img/img10.webp";
   String userName = "Varuna Yasas";
   String details = "1 reviw 5 photos";
   String comment = "There is an amazing place in Sri Lanka";

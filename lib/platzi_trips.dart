@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/page/profile_trips.dart';
-import 'package:platzi_trips_app/page/search_trips.dart';
-import 'home_trips.dart';
+
+import 'Place/ui/screens/home_trips.dart';
+import 'User/ui/screens/profile_trips.dart';
+import 'Place/ui/screens/search_trips.dart';
 
 class PlatziTrips extends StatefulWidget {
   const PlatziTrips({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class PlatziTrips extends StatefulWidget {
 
 class _PlatziTripsState extends State<PlatziTrips> {
   int indexTap = 0;
-  final List<Widget> widgetsChildren = [
+  final List<Widget> widgetsChildren = const [
     HomeTrips(),
     SearchTrips(),
     ProfileTrips()
@@ -35,11 +36,12 @@ class _PlatziTripsState extends State<PlatziTrips> {
           ),
           child: BottomNavigationBar(
               currentIndex: indexTap,
-              onTap: onTapTapped, items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "")
-          ]),
+              onTap: onTapTapped,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+                BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
+                BottomNavigationBarItem(icon: Icon(Icons.person), label: "")
+              ]),
         ));
   }
 }

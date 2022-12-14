@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/star_point.dart';
+import 'package:platzi_trips_app/widgets/floating_action_button_green.dart';
 import 'package:platzi_trips_app/widgets/title_secondary.dart';
-
-import 'button.dart';
-import 'floating_action_button_green.dart';
 
 class BriefDescription extends StatelessWidget {
   final String namePlace;
@@ -33,9 +30,9 @@ class BriefDescription extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   setTitle(),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   setDescriptionPlase(),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   setSteps()
                 ],
               ),

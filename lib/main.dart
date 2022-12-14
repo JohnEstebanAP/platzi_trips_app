@@ -1,12 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/page/home_trips.dart';
-import 'package:platzi_trips_app/page/platzi_trips.dart';
-import 'package:platzi_trips_app/widgets/description_place.dart';
-import 'package:platzi_trips_app/widgets/gradient_back.dart';
-import 'package:platzi_trips_app/widgets/header_appbar.dart';
-import 'package:platzi_trips_app/widgets/review_list.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
+import 'package:platzi_trips_app/User/ui/screens/sign_in_screen.dart';
+import 'package:platzi_trips_app/platzi_trips.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -15,13 +20,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      bloc: BlocUser(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SingInScreen(),
       ),
-      home: const PlatziTrips(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StarPoint extends StatelessWidget {
@@ -55,7 +54,7 @@ class StarPoint extends StatelessWidget {
       child: Icon(
         size: sizeStars,
         Icons.star,
-        color: Color(0xFFf2C611),
+        color: const Color(0xFFf2C611),
       ),
     );
   }

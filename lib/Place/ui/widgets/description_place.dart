@@ -7,7 +7,8 @@ class DescriptionPlace extends StatelessWidget {
   int numStars;
   String descriptionPlace;
 
-  DescriptionPlace(this.namePlace, this.numStars, this.descriptionPlace);
+  DescriptionPlace(this.namePlace, this.numStars, this.descriptionPlace,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,10 @@ class DescriptionPlace extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        StarPoint(numStars: numStars, sizeStars: 33,)
+        StarPoint(
+          numStars: numStars,
+          sizeStars: 33,
+        )
       ],
     );
   }

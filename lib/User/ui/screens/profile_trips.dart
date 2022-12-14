@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/favorites_list.dart';
-import 'package:platzi_trips_app/widgets/gradient_back.dart';
-import 'package:platzi_trips_app/widgets/header_appbar_profile.dart';
+import 'package:platzi_trips_app/User/ui/screens/header_appbar_profile.dart';
+import 'package:platzi_trips_app/User/ui/widgets/favorites_list.dart';
 
 class ProfileTrips extends StatelessWidget {
   const ProfileTrips({Key? key}) : super(key: key);

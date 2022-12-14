@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/star_point.dart';
 import 'package:platzi_trips_app/widgets/title_secondary.dart';
 
 class HeaderProfile extends StatelessWidget {
@@ -42,7 +40,8 @@ class HeaderProfile extends StatelessWidget {
   }
 
   Card _photo() => Card(
-        shape: CircleBorder(side: BorderSide(width: 1.5, color: Colors.white)),
+        shape: const CircleBorder(
+            side: BorderSide(width: 1.5, color: Colors.white)),
         child: Container(
           width: 80,
           height: 80,

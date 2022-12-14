@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/brief_description.dart';
 
-import 'card_imagen_custom.dart';
-import 'floating_action_button_green.dart';
+import '../../../Place/ui/widgets/brief_description.dart';
+import '../../../Place/ui/widgets/card_imagen_custom.dart';
 
 class PlaseFavorite extends StatelessWidget {
   final String pathImage;

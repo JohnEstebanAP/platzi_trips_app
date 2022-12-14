@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/card_image_list.dart';
-import 'package:platzi_trips_app/widgets/gradient_back.dart';
+
+import '../widgets/card_image_list.dart';
+import '../../../widgets/gradient_back.dart';
 
 class HeaderAppbar extends StatelessWidget {
   const HeaderAppbar({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class HeaderAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        GradientBack(),
+        const GradientBack(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [

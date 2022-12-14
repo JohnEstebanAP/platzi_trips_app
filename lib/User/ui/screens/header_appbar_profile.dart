@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:platzi_trips_app/widgets/botton_navigation_bar_custom.dart';
+import 'package:platzi_trips_app/User/ui/widgets/botton_navigation_bar_custom.dart';
+import 'package:platzi_trips_app/User/ui/widgets/header_profile.dart';
 import 'package:platzi_trips_app/widgets/gradient_back.dart';
-import 'package:platzi_trips_app/widgets/header_profile.dart';
 import 'package:platzi_trips_app/widgets/title_primary.dart';
-
-import 'favorites_list.dart';
 
 class HeaderAppbarProfile extends StatelessWidget {
   const HeaderAppbarProfile({Key? key}) : super(key: key);
@@ -23,7 +21,7 @@ class HeaderAppbarProfile extends StatelessWidget {
               TitlePrimary(title: "Profile"),
               SizedBox(height: 10),
               HeaderProfile(
-                  pathImage: "assets/img/img7.jpg",
+                  pathImage: "assets/img/img7.webp",
                   userName: "Pathum Tzoo",
                   details: "pathumzoo1@gmail.com"),
               SizedBox(height: 10),
