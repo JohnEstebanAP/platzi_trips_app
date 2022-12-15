@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 
 import 'Place/ui/screens/home_trips.dart';
 import 'User/ui/screens/profile_trips.dart';
@@ -28,7 +30,10 @@ class _PlatziTripsState extends State<PlatziTrips> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: widgetsChildren[indexTap],
+        body: BlocProvider<BlocUser>(
+          bloc: BlocUser(),
+          child: widgetsChildren[indexTap],
+        ),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: Colors.white,

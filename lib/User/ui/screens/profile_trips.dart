@@ -7,9 +7,9 @@ class ProfileTrips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: const [
+    return Stack(children: [
       HeaderAppbarProfile(),
-      Padding(
+      const Padding(
         padding: EdgeInsets.only(top: 250),
         child: FavoritesList(),
       )

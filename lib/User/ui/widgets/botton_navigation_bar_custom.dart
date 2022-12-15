@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 
 class BottonNavigationBarCustom extends StatefulWidget {
   const BottonNavigationBarCustom({Key? key}) : super(key: key);
@@ -9,50 +11,45 @@ class BottonNavigationBarCustom extends StatefulWidget {
 }
 
 class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
-  int indexTap = 2;
+  late BlocUser userBloc;
+
+  int indexTap = 1;
 
   void onTapTapped(int index) {
     setState(() {
       indexTap = index;
+      switch (index) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          userBloc.signOut();
+          break;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    userBloc = BlocProvider.of(context);
     var listItems = [
       (indexTap == 0)
           ? BottomNavigationBarItem(
-              icon: _iconCustom(
-                  50, Colors.white, Icons.bookmark_outline_outlined),
-              label: "")
+              icon: _iconCustom(50, Colors.white, Icons.vpn_key), label: "")
           : BottomNavigationBarItem(
-              icon: _iconCustom(
-                  35, Colors.white60, Icons.bookmark_outline_outlined),
-              label: ""),
+              icon: _iconCustom(35, Colors.white60, Icons.vpn_key), label: ""),
       (indexTap == 1)
-          ? BottomNavigationBarItem(
-              icon: _iconCustom(50, Colors.white, Icons.live_tv_outlined),
-              label: "")
-          : BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.live_tv_outlined),
-              label: ""),
-      (indexTap == 2)
           ? BottomNavigationBarItem(
               icon: _iconCustom(50, Colors.white, Icons.add), label: "")
           : BottomNavigationBarItem(
               icon: _iconCustom(35, Colors.white60, Icons.add), label: ""),
-      (indexTap == 3)
+      (indexTap == 2)
           ? BottomNavigationBarItem(
-              icon: _iconCustom(50, Colors.white, Icons.email_outlined),
-              label: "")
+              icon: _iconCustom(50, Colors.white, Icons.exit_to_app), label: "")
           : BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.email_outlined),
+              icon: _iconCustom(35, Colors.white60, Icons.exit_to_app),
               label: ""),
-      (indexTap == 4)
-          ? BottomNavigationBarItem(
-              icon: _iconCustom(50, Colors.white, Icons.person), label: "")
-          : BottomNavigationBarItem(
-              icon: _iconCustom(35, Colors.white60, Icons.person), label: ""),
     ];
     return Theme(
       data: Theme.of(context).copyWith(

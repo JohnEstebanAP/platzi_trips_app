@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:platzi_trips_app/User/model/user.dart';
 import 'package:platzi_trips_app/widgets/title_secondary.dart';
 
-class HeaderProfile extends StatelessWidget {
-  final String? pathImage;
-  final String? userName;
-  final String? details;
+class UserInfo extends StatelessWidget {
+  final UserModel user;
 
-  const HeaderProfile({super.key, this.pathImage, this.userName, this.details});
+  const UserInfo({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +25,12 @@ class HeaderProfile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleSecondary(
-          title: userName!,
+          title: user.name!,
           sizeText: 18.0,
           color: Colors.white,
         ),
         TitleSecondary(
-          title: details!,
+          title: user.email!,
           sizeText: 15.0,
           color: const Color(0xFFa3a5a7),
         ),
@@ -48,8 +47,9 @@ class HeaderProfile extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage(
-                  (pathImage != null) ? pathImage! : "assets/img/img8.jpg"),
+              image: NetworkImage((user.photoURL != null)
+                  ? user.photoURL!
+                  : "https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg"),
               fit: BoxFit.cover,
             ),
           ),
