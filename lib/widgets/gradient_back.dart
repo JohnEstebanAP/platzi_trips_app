@@ -14,7 +14,7 @@ class GradientBack extends StatelessWidget {
         gradient: RadialGradient(
             colors: [
               Color(0xff4268D3),
-              Color(0xf74268d3),
+              Color(0xff486DD5),
             ],
             center: Alignment(1, 0),
             radius: 1.4,

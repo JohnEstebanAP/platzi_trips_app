@@ -60,7 +60,7 @@ class HeaderAppbarProfile extends StatelessWidget {
   Stack _headerAppbarProfile(UserModel user) {
     return Stack(
       children: [
-        const GradientBack(height: 350.0),
+        GradientBack(height: 350.0),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(

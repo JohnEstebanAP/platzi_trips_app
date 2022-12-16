@@ -20,21 +20,23 @@ class UserInfo extends StatelessWidget {
     );
   }
 
-  Column _nameEmail() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TitleSecondary(
-          title: user.name!,
-          sizeText: 18.0,
-          color: Colors.white,
-        ),
-        TitleSecondary(
-          title: user.email!,
-          sizeText: 15.0,
-          color: const Color(0xFFa3a5a7),
-        ),
-      ],
+  Expanded _nameEmail() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TitleSecondary(
+            title: user.name!,
+            sizeText: 18.0,
+            color: Colors.white,
+          ),
+          TitleSecondary(
+            title: user.email!,
+            sizeText: 15.0,
+            color: const Color(0xFFa3a5a7),
+          ),
+        ],
+      ),
     );
   }
 
