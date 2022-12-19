@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class CardImagenCustom extends StatelessWidget {
@@ -23,7 +25,9 @@ class CardImagenCustom extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(pathImage),
+          image: pathImage.contains("assets")
+              ? AssetImage(pathImage)
+              : FileImage(File(pathImage)) as ImageProvider,
         ),
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         shape: BoxShape.rectangle,

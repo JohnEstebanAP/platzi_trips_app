@@ -13,7 +13,7 @@ class CardImageWithFabIcon extends StatelessWidget {
 
   const CardImageWithFabIcon(
       {Key? key,
-      this.pathImage = "assets/img/img10.jpg",
+      required this.pathImage,
       this.iconNoSeletion = Icons.favorite,
       this.iconSeletion = Icons.favorite_border,
       this.onPressedFabIcon,

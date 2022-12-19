@@ -1,8 +1,13 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:platzi_trips_app/Place/models/place.dart';
 import 'package:platzi_trips_app/Place/ui/widgets/card_imagen_custom.dart';
 import 'package:platzi_trips_app/Place/ui/widgets/title_input_location.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 import 'package:platzi_trips_app/widgets/button.dart';
 import 'package:platzi_trips_app/widgets/card_image_with_fab_icon.dart';
 import 'package:platzi_trips_app/widgets/gradient_back.dart';
@@ -13,7 +18,7 @@ import 'package:platzi_trips_app/widgets/title_secondary.dart';
 class AddPlaceScreen extends StatefulWidget {
   final File? image;
 
-  const AddPlaceScreen({Key? key, this.image}) : super(key: key);
+  const AddPlaceScreen({Key? key, required this.image}) : super(key: key);
 
   @override
   State<AddPlaceScreen> createState() => _AddPlaceScreenState();
@@ -22,6 +27,8 @@ class AddPlaceScreen extends StatefulWidget {
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   @override
   Widget build(BuildContext context) {
+    BlocUser blocUser = BlocProvider.of<BlocUser>(context);
+
     final TextEditingController _controllerTitlePlace = TextEditingController();
     final TextEditingController _controllerDescriptionPlace =
         TextEditingController();
@@ -100,12 +107,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Button(
                   buttonText: "Add Place",
-                  onPressed: () {
-                    //Firebase Store
-                    //url -
-                    //Cloud Firestore
-                    //Place - title, description, url, user , owner
-                  },
+                  onPressed: addPlace(blocUser, _controllerTitlePlace,
+                      _controllerDescriptionPlace),
                 ),
               )
             ],
@@ -113,5 +116,39 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         ),
       ]),
     );
+  }
+
+  addPlace(BlocUser blocUser, TextEditingController _controllerTitlePlace,
+      TextEditingController _controllerDescriptionPlace) {
+    //ID del usuario logeado
+    blocUser.currentUser.then((user) {
+      if (user != null) {
+        String uid = user.uid;
+        String path = "${uid}/${DateTime.now().toString()}.jpg";
+        //1. Firebase Store
+        //url -
+        blocUser
+            .uploadFile(path, widget.image!)
+            .then((UploadTask storageUploadTask) {
+          storageUploadTask.then((TaskSnapshot snapshot) {
+            snapshot.ref.getDownloadURL().then((urlImage) {
+              print("URLIMAGE: ${urlImage}");
+              //2. Cloud Firestore
+              //Place - title, description, url, user , owner
+              blocUser
+                  .updatePlaceData(Place(
+                name: _controllerTitlePlace.text,
+                description: _controllerDescriptionPlace.text,
+                likes: 0,
+              ))
+                  .whenComplete(() {
+                print("Termino");
+                Navigator.pop(context);
+              });
+            });
+          });
+        });
+      }
+    });
   }
 }

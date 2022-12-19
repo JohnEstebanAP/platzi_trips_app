@@ -45,6 +45,7 @@ dependencies:
   auto_size_text: ^3.0.0
   device_preview: ^1.1.0
   responsive_builder: ^0.4.3
+  image_picker: ^0.8.6
 
 
 dev_dependencies:
