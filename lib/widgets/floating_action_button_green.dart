@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
 class FloatingActionButtonGreen extends StatefulWidget {
-  FloatingActionButtonGreen({Key? key, this.isSelecte = false, this.size})
+  FloatingActionButtonGreen(
+      {Key? key,
+      this.isSelecte = false,
+      this.size,
+      required this.iconNoSeletion,
+      required this.iconSelection,
+      this.onPressedFabIcon})
       : super(key: key);
 
   bool isSelecte;
   final double? size;
+  final IconData iconNoSeletion;
+  final IconData iconSelection;
+  final VoidCallback? onPressedFabIcon;
 
   @override
   State<FloatingActionButtonGreen> createState() =>
@@ -14,7 +23,6 @@ class FloatingActionButtonGreen extends StatefulWidget {
 
 class _FloatingActionButtonGreenState extends State<FloatingActionButtonGreen> {
   void onPressedFav() {
-    print("Hola me diste click");
     setState(() {
       (widget.isSelecte) ? widget.isSelecte = false : widget.isSelecte = true;
     });
@@ -31,8 +39,8 @@ class _FloatingActionButtonGreenState extends State<FloatingActionButtonGreen> {
         tooltip: "Fav",
         onPressed: onPressedFav,
         child: (widget.isSelecte)
-            ? const Icon(Icons.favorite)
-            : const Icon(Icons.favorite_border),
+            ? Icon(widget.iconNoSeletion)
+            : Icon(widget.iconSelection),
       ),
     );
   }

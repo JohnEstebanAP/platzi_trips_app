@@ -37,8 +37,14 @@ class BriefDescription extends StatelessWidget {
                 ],
               ),
               Align(
-                  alignment: const Alignment(0.8, 1.1),
-                  child: FloatingActionButtonGreen(size: 35, isSelecte: true)),
+                alignment: const Alignment(0.8, 1.1),
+                child: FloatingActionButtonGreen(
+                  size: 35,
+                  isSelecte: true,
+                  iconNoSeletion: Icons.favorite,
+                  iconSelection: Icons.favorite_border,
+                ),
+              ),
             ],
           )),
     );

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/Place/ui/screens/add_place_screen.dart';
 import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 
 class BottonNavigationBarCustom extends StatefulWidget {
@@ -22,6 +25,13 @@ class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
         case 0:
           break;
         case 1:
+          File image;
+
+          Navigator.push(context, MaterialPageRoute(builder: (
+            BuildContext context,
+          ) {
+            return const AddPlaceScreen(image: null);
+          }));
           break;
         case 2:
           userBloc.signOut();

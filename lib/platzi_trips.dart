@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/Place/ui/screens/add_place_screen.dart';
 import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 
 import 'Place/ui/screens/home_trips.dart';
@@ -17,7 +18,7 @@ class _PlatziTripsState extends State<PlatziTrips> {
   int indexTap = 0;
   final List<Widget> widgetsChildren = const [
     HomeTrips(),
-    SearchTrips(),
+    AddPlaceScreen(),//SearchTrips(),
     ProfileTrips()
   ];
 

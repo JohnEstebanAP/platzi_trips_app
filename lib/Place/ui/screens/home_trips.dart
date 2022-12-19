@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import '../widgets/description_place.dart';
 import 'header_appbar.dart';
@@ -14,6 +15,14 @@ class HomeTrips extends StatefulWidget {
 class _HomeTripsState extends State<HomeTrips> {
   @override
   Widget build(BuildContext context) {
+    return ScreenTypeLayout(
+      mobile: _homeTirps(),
+      desktop: _homeTirps(),
+      tablet: _homeTirps(),
+    );
+  }
+
+  Stack _homeTirps() {
     return Stack(
       children: [
         ListView(

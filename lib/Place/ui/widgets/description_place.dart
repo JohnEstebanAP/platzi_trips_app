@@ -23,7 +23,10 @@ class DescriptionPlace extends StatelessWidget {
         children: [
           _title_stars(),
           _description(),
-          const Button(buttonText: "Navigate")
+          Button(
+            buttonText: "Navigate",
+            onPressed: () {},
+          )
         ],
       ),
     );
@@ -41,10 +44,23 @@ class DescriptionPlace extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        StarPoint(
-          numStars: numStars,
-          sizeStars: 33,
-        )
+        Expanded(
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              var sizeStars = (((constraints.maxWidth) / 5) - 6);
+              //total del espacio disponible / las 5 estrellas - 6 de margen que tienen las estrellas
+              if (sizeStars > 50) {
+                sizeStars = sizeStars * 0.3;
+              }
+
+              //return Text(sizeStars.toString());
+              return StarPoint(
+                numStars: numStars,
+                sizeStars: sizeStars,
+              );
+            },
+          ),
+        ),
       ],
     );
   }

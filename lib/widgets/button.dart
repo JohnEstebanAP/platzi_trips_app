@@ -2,14 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  const Button({Key? key, this.buttonText = "Navigate"}) : super(key: key);
+  const Button(
+      {Key? key, this.buttonText = "Navigate", required this.onPressed})
+      : super(key: key);
 
   final String buttonText;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         margin: const EdgeInsets.only(top: 30.0),
         height: 50,

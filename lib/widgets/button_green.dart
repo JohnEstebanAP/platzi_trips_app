@@ -28,7 +28,6 @@ class ButtonGreen extends StatelessWidget {
           child: Ink(
             width: width,
             height: height,
-            //margin: const EdgeInsets.only(top: 30, left: 20, right: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.0),
               gradient: const LinearGradient(colors: [
