@@ -28,7 +28,6 @@ class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
           break;
         case 1:
           File image;
-
           ImagePicker().pickImage(source: ImageSource.camera).then((image) {
             if (image?.path != null) {
               Navigator.push(context,
@@ -37,7 +36,6 @@ class _BottonNavigationBarCustomState extends State<BottonNavigationBarCustom> {
               })).catchError((onError) => print(onError));
             }
           });
-
           break;
         case 2:
           userBloc.signOut();

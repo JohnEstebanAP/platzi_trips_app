@@ -18,7 +18,7 @@ import 'package:platzi_trips_app/widgets/title_secondary.dart';
 class AddPlaceScreen extends StatefulWidget {
   final File? image;
 
-  const AddPlaceScreen({Key? key, required this.image}) : super(key: key);
+  const AddPlaceScreen({Key? key, this.image}) : super(key: key);
 
   @override
   State<AddPlaceScreen> createState() => _AddPlaceScreenState();
@@ -66,7 +66,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           ],
         ),
         Container(
-          margin: EdgeInsets.only(top: 120, bottom: 20),
+          margin: const EdgeInsets.only(top: 120, bottom: 20),
           child: ListView(
             children: [
               Container(
@@ -82,7 +82,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 20.0),
+                margin: const EdgeInsets.only(bottom: 20.0),
                 child: TextInput(
                   hintText: "Title",
                   inputType: TextInputType.name,
@@ -103,52 +103,48 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     controller: _controllerLocationPlace,
                     iconData: Icons.location_on_outlined),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+              /*  Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: Button(
                   buttonText: "Add Place",
-                  onPressed: addPlace(blocUser, _controllerTitlePlace,
-                      _controllerDescriptionPlace),
+                  onPressed: () {
+                    //ID del usuario logeado
+                    blocUser.currentUser.then((user) {
+                      if (user != null) {
+                        String uid = user.uid;
+                        String path = "${uid}/${DateTime.now().toString()}.jpg";
+                        //1. Firebase Store
+                        //url -
+                        blocUser
+                            .uploadFile(path, widget.image!)
+                            .then((UploadTask storageUploadTask) {
+                          storageUploadTask.then((TaskSnapshot snapshot) {
+                            snapshot.ref.getDownloadURL().then((urlImage) {
+                              print("URLIMAGE: ${urlImage}");
+                              //2. Cloud Firestore
+                              //Place - title, description, url, user , owner
+                              blocUser
+                                  .updatePlaceData(Place(
+                                name: _controllerTitlePlace.text,
+                                description: _controllerDescriptionPlace.text,
+                                likes: 0,
+                              ))
+                                  .whenComplete(() {
+                                print("Termino");
+                                Navigator.pop(context);
+                              });
+                            });
+                          });
+                        });
+                      }
+                    });
+                  },
                 ),
-              )
+              )*/
             ],
           ),
         ),
       ]),
     );
-  }
-
-  addPlace(BlocUser blocUser, TextEditingController _controllerTitlePlace,
-      TextEditingController _controllerDescriptionPlace) {
-    //ID del usuario logeado
-    blocUser.currentUser.then((user) {
-      if (user != null) {
-        String uid = user.uid;
-        String path = "${uid}/${DateTime.now().toString()}.jpg";
-        //1. Firebase Store
-        //url -
-        blocUser
-            .uploadFile(path, widget.image!)
-            .then((UploadTask storageUploadTask) {
-          storageUploadTask.then((TaskSnapshot snapshot) {
-            snapshot.ref.getDownloadURL().then((urlImage) {
-              print("URLIMAGE: ${urlImage}");
-              //2. Cloud Firestore
-              //Place - title, description, url, user , owner
-              blocUser
-                  .updatePlaceData(Place(
-                name: _controllerTitlePlace.text,
-                description: _controllerDescriptionPlace.text,
-                likes: 0,
-              ))
-                  .whenComplete(() {
-                print("Termino");
-                Navigator.pop(context);
-              });
-            });
-          });
-        });
-      }
-    });
   }
 }
