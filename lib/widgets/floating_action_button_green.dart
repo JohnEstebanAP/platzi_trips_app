@@ -24,6 +24,7 @@ class FloatingActionButtonGreen extends StatefulWidget {
 class _FloatingActionButtonGreenState extends State<FloatingActionButtonGreen> {
   void onPressedFav() {
     setState(() {
+      if (widget.onPressedFabIcon != null) widget.onPressedFabIcon!();
       (widget.isSelecte) ? widget.isSelecte = false : widget.isSelecte = true;
     });
   }

@@ -8,14 +8,14 @@ import 'package:platzi_trips_app/widgets/gradient_back.dart';
 import 'package:platzi_trips_app/widgets/title_primary.dart';
 
 class HeaderAppbarProfile extends StatelessWidget {
-  late BlocUser userBloc;
-  late UserModel user;
+  final UserModel user;
+
+  const HeaderAppbarProfile({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
-    userBloc = BlocProvider.of<BlocUser>(context);
-
-    return StreamBuilder(
+    return _headerAppbarProfile(user);
+    /*StreamBuilder(
         stream: userBloc.streamFirebase,
         builder: (_, AsyncSnapshot snapshot) {
           switch (snapshot.connectionState) {
@@ -26,9 +26,10 @@ class HeaderAppbarProfile extends StatelessWidget {
             case ConnectionState.done:
               return showProfileData(snapshot);
           }
-        });
+        });*/
   }
 
+/*
   Widget showProfileData(AsyncSnapshot snapshot) {
     if (!snapshot.hasData || snapshot.hasError) {
       print("No logeado");
@@ -44,7 +45,7 @@ class HeaderAppbarProfile extends StatelessWidget {
       return _headerAppbarProfile(user);
     }
   }
-
+*/
   Container _awaitLoginAndData() {
     return Container(
       margin: const EdgeInsets.only(top: 50, left: 20, right: 20),
@@ -60,7 +61,7 @@ class HeaderAppbarProfile extends StatelessWidget {
   Stack _headerAppbarProfile(UserModel user) {
     return Stack(
       children: [
-        GradientBack(height: 350.0),
+        const GradientBack(height: 350.0),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(

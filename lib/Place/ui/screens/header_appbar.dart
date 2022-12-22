@@ -13,8 +13,8 @@ class HeaderAppbar extends StatelessWidget {
         const GradientBack(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Padding(
+          children: [
+            const Padding(
               padding: EdgeInsets.only(top: 40, left: 20),
               child: Text(
                 "Bienvenido",

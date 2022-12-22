@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:platzi_trips_app/Place/models/place.dart';
 
 import '../../../Place/ui/widgets/brief_description.dart';
 import '../../../Place/ui/widgets/card_imagen_custom.dart';
 
-class PlaseFavorite extends StatelessWidget {
-  final String pathImage;
+class PlaceFavorite extends StatelessWidget {
+  final Place place;
 
-  const PlaseFavorite({Key? key, this.pathImage = "assets/img/img10.jpg"})
-      : super(key: key);
+  const PlaceFavorite({Key? key, required this.place}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +20,17 @@ class PlaseFavorite extends StatelessWidget {
       child: Stack(
         children: [
           CardImagenCustom(
-            pathImage: pathImage,
+            pathImage: place.uriImage!,
             widthCardImage: size.width,
             heightCardImage: size.height * 0.26,
             borderRadius: 25,
           ),
-          const Align(
-            alignment: Alignment(0.0, 0.9),
+          Align(
+            alignment: const Alignment(0.0, 0.9),
             child: BriefDescription(
-              namePlace: "Knuckles Montains Range",
-              descriptionPlace:
-                  "Hiking Water tall hunting, Natural bath. \nScenary & Photography",
-              steps: "Steps    123,123,123",
+              namePlace: place.name ?? "",
+              descriptionPlace: place.description,
+              steps: "Heart ${place.likes}",
             ),
           ),
         ],

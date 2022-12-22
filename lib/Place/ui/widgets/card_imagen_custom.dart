@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardImagenCustom extends StatelessWidget {
@@ -23,12 +24,6 @@ class CardImagenCustom extends StatelessWidget {
       width: widthCardImage,
       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: pathImage.contains("assets")
-              ? AssetImage(pathImage)
-              : FileImage(File(pathImage)) as ImageProvider,
-        ),
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         shape: BoxShape.rectangle,
         boxShadow: const <BoxShadow>[
@@ -39,6 +34,25 @@ class CardImagenCustom extends StatelessWidget {
           )
         ],
       ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        child: FadeInImage(
+          fadeInDuration: const Duration(milliseconds: 300),
+          fit: BoxFit.cover,
+          image: setImage(pathImage),
+          placeholder: const AssetImage("assets/img/img10.webp"),
+        ),
+      ),
     );
+  }
+
+  ImageProvider<Object> setImage(String pathImage) {
+    if (pathImage.contains("assets")) return AssetImage(pathImage);
+
+    if (pathImage.contains("http")) {
+      return CachedNetworkImageProvider(pathImage);
+    }
+
+    return FileImage(File(pathImage));
   }
 }
